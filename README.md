@@ -22,12 +22,12 @@ It starts the gofiber server on the port specified in the `.env` file
 #### Using a redirect to another site with a short name
 
 ```http
- GET /i/${shortname}
+GET /i/${shortname}
 ```
 
-| Parameter   | Type     | Description                       |
-| :-----------| :------- | :-------------------------------- |
-| `shortname` | `string` | **Required**. TThe short name is the unique identifier assigned to the shortened link. When this endpoint is accessed with the appropriate short name, it redirects the user to the original URL associated with that short name |
+| Parameter   | Type     | Description                                                                                                                                                                                                                     |
+| :-----------| :------- |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `shortname` | `string` | **Required**. The short name is the unique identifier assigned to the shortened link. When this endpoint is accessed with the appropriate short name, it redirects the user to the original URL associated with that short name |
 
 #### Creating a new shortened link
 
