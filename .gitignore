@@ -1,0 +1,8 @@
+.env
+/bin/
+/.idea/.gitignore
+/.idea/dataSources.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/url-shortener.iml
+/.idea/vcs.xml
