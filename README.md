@@ -5,7 +5,7 @@
 
 ---
 
-A service for shortening links using the Go programming language and packages such as GORM to interact with the PostgreSQL database and Fiber to create a web interface.
+**url-shortener** is a service for shortening links using the Go programming language and packages such as GORM to interact with the PostgreSQL database and Fiber to create a web interface.
 
 ## Deployment
 
@@ -22,7 +22,7 @@ It starts the gofiber server on the port specified in the `.env` file
 #### Using a redirect to another site with a short name
 
 ```http
-  GET /i/${shortname}
+ GET /i/${shortname}
 ```
 
 | Parameter   | Type     | Description                       |

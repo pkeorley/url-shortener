@@ -8,6 +8,7 @@
 //
 // The above copyright notice and this permission notice (including the next paragraph) shall be included in all copies
 // or substantial portions of the Software.
+
 package config
 
 import (
