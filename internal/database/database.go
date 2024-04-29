@@ -153,8 +153,12 @@ func (db Database) CreateShortLink(apiKey uuid.UUID, shortname string, url strin
 }
 
 // CreateApiKey creates a new API key in the database.
-func (db Database) CreateApiKey() (*ApiKey, error) {
-	var apiKey = ApiKey{}
+func (db Database) CreateApiKey(key ...uuid.UUID) (*ApiKey, error) {
+	if len(key) == 0 {
+		key = append(key, uuid.New())
+	}
+
+	var apiKey = ApiKey{ApiKey: key[0]}
 
 	// Create API key and return it to the apiKey variable
 	result := db.DB.Model(&ApiKey{}).Create(&apiKey).First(&apiKey)
