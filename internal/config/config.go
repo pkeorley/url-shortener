@@ -39,7 +39,7 @@ func (Config) String() string {
 }
 
 // GetPostgres returns a new instance of Postgres configured based on the provided Config.
-func (Config) GetPostgres() *postgres {
+func (Config) GetPostgres() *Postgres {
 	return newPostgres()
 }
 
