@@ -26,18 +26,18 @@ type Postgres struct {
 	DBName   string `env:"DB_NAME,required"`
 }
 
-// String returns a string representation of the Postgres configuration.
+// String returns a string representation of the postgres configuration.
 func (p Postgres) String() any {
-	return fmt.Sprintf("Postgres{Username:%v, Host:%v, Port:%v, Password:%v, DBName:%v}", p.Username, p.Host, p.Port, p.Password, p.DBName)
+	return fmt.Sprintf("postgres{Username:%v, Host:%v, Port:%v, Password:%v, DBName:%v}", p.Username, p.Host, p.Port, p.Password, p.DBName)
 }
 
-// GetDSN returns the DSN for the Postgres database.
+// GetDSN returns the DSN for the postgres database.
 func (p Postgres) GetDSN() string {
 	return fmt.Sprintf("host=%s port=%s user=%s dbname=%s password=%s sslmode=disable", p.Host, p.Port, p.Username, p.DBName, p.Password)
 }
 
-// NewPostgres returns a new Postgres configuration.
-func NewPostgres() *Postgres {
+// newPostgres returns a new Postgres configuration.
+func newPostgres() *Postgres {
 	pg, err := env.ParseAs[Postgres]()
 	if err != nil {
 		log.Fatal(err)

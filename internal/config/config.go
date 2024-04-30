@@ -11,23 +11,39 @@
 
 package config
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/joho/godotenv"
+	"log"
+)
+
+// LoadDotenvValues loads environment variables from a .env file using the godotenv package.
+func LoadDotenvValues(filenames ...string) {
+	if err := godotenv.Load(filenames...); err != nil {
+		log.Fatal(err)
+	}
+}
 
 // Config represents the application configuration.
-type Config struct {
-	Postgres *Postgres
-	Fiber    *Fiber
-}
-
-// String returns a string representation of the Config.
-func (c Config) String() string {
-	return fmt.Sprintf("Config{Postgres: %v}", c.Postgres.String())
-}
+type Config struct{}
 
 // New returns a new Config.
 func New() *Config {
-	return &Config{
-		Postgres: NewPostgres(),
-		Fiber:    NewFiber(),
-	}
+	LoadDotenvValues()
+	return &Config{}
+}
+
+// String returns a string representation of the Config.
+func (Config) String() string {
+	return fmt.Sprintf("Config{}")
+}
+
+// GetPostgres returns a new instance of Postgres configured based on the provided Config.
+func (Config) GetPostgres() *Postgres {
+	return newPostgres()
+}
+
+// GetFiber returns a new instance of Fiber configured based on the provided Config.
+func (Config) GetFiber() *Fiber {
+	return newFiber()
 }

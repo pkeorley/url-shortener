@@ -15,7 +15,6 @@ import (
 	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
-	"github.com/joho/godotenv"
 	"github.com/pkeorley/url-shortener/internal/config"
 	"github.com/pkeorley/url-shortener/internal/database"
 	"log"
@@ -26,6 +25,8 @@ var (
 )
 
 func main() {
+	cfg := config.New()
+
 	db = database.New(database.DialectorPostgres)
 	if err := db.DB.AutoMigrate(
 		&database.ApiKey{},
@@ -111,13 +112,5 @@ func main() {
 		return c.JSON(shortLink)
 	})
 
-	cfg := config.NewFiber()
-	log.Fatal(app.Listen(":" + cfg.Port))
-}
-
-// init initializes the application configuration by loading environment variables from a .env file.
-func init() {
-	if err := godotenv.Load(); err != nil {
-		log.Fatal(err)
-	}
+	log.Fatal(app.Listen(":" + cfg.GetPostgres().Port))
 }

@@ -22,13 +22,13 @@ type Fiber struct {
 }
 
 func (f Fiber) String() string {
-	return fmt.Sprintf("Fiber{Port:%v}", f.Port)
+	return fmt.Sprintf("fiber{Port:%v}", f.Port)
 }
 
-func NewFiber() *Fiber {
-	fiber, err := env.ParseAs[Fiber]()
+func newFiber() *Fiber {
+	f, err := env.ParseAs[Fiber]()
 	if err != nil {
 		log.Fatal(err)
 	}
-	return &fiber
+	return &f
 }
