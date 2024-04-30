@@ -28,14 +28,12 @@ const (
 
 // getDialector returns a gorm.Dialector based on the provided Dialector.
 func getDialector(d Dialector) gorm.Dialector {
-	var cfg = config.New()
-
 	switch d {
 	default:
 		log.Fatal(ErrDialectorNotFound)
 		return nil
 	case DialectorPostgres:
-		return postgres.Open(cfg.Postgres.GetDSN())
+		var pgCfg = config.New().GetPostgres()
+		return postgres.Open(pgCfg.GetDSN())
 	}
-
 }
