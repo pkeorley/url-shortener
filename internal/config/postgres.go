@@ -17,8 +17,8 @@ import (
 	"log"
 )
 
-// Postgres represents the Postgres configuration.
-type Postgres struct {
+// postgres represents the postgres configuration.
+type postgres struct {
 	Username string `env:"POSTGRES_USERNAME,required"`
 	Host     string `env:"POSTGRES_HOST,required"`
 	Port     string `env:"POSTGRES_PORT" envDefault:"5432"`
@@ -26,19 +26,19 @@ type Postgres struct {
 	DBName   string `env:"DB_NAME,required"`
 }
 
-// String returns a string representation of the Postgres configuration.
-func (p Postgres) String() any {
-	return fmt.Sprintf("Postgres{Username:%v, Host:%v, Port:%v, Password:%v, DBName:%v}", p.Username, p.Host, p.Port, p.Password, p.DBName)
+// String returns a string representation of the postgres configuration.
+func (p postgres) String() any {
+	return fmt.Sprintf("postgres{Username:%v, Host:%v, Port:%v, Password:%v, DBName:%v}", p.Username, p.Host, p.Port, p.Password, p.DBName)
 }
 
-// GetDSN returns the DSN for the Postgres database.
-func (p Postgres) GetDSN() string {
+// GetDSN returns the DSN for the postgres database.
+func (p postgres) GetDSN() string {
 	return fmt.Sprintf("host=%s port=%s user=%s dbname=%s password=%s sslmode=disable", p.Host, p.Port, p.Username, p.DBName, p.Password)
 }
 
-// NewPostgres returns a new Postgres configuration.
-func NewPostgres() *Postgres {
-	pg, err := env.ParseAs[Postgres]()
+// newPostgres returns a new postgres configuration.
+func newPostgres() *postgres {
+	pg, err := env.ParseAs[postgres]()
 	if err != nil {
 		log.Fatal(err)
 	}

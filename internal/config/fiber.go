@@ -17,16 +17,16 @@ import (
 	"log"
 )
 
-type fiber struct {
+type Fiber struct {
 	Port string `env:"FIBER_PORT" envDefault:"3000"`
 }
 
-func (f fiber) String() string {
+func (f Fiber) String() string {
 	return fmt.Sprintf("fiber{Port:%v}", f.Port)
 }
 
-func newFiber() *fiber {
-	f, err := env.ParseAs[fiber]()
+func newFiber() *Fiber {
+	f, err := env.ParseAs[Fiber]()
 	if err != nil {
 		log.Fatal(err)
 	}
