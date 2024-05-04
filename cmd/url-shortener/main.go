@@ -112,5 +112,5 @@ func main() {
 		return c.JSON(shortLink)
 	})
 
-	log.Fatal(app.Listen(":" + cfg.GetPostgres().Port))
+	log.Fatal(app.Listen(":" + cfg.GetFiber().Port))
 }
