@@ -7,6 +7,10 @@
 
 **url-shortener** is a service for shortening links using the Go programming language and packages such as GORM to interact with the PostgreSQL database and Fiber to create a web interface.
 
+## Update from 27/07/2024
+
+I have decided that the entire codebase should be rewritten. ⚡ This is due to the low quality of the code, which limits the use of the service and architectural limitations that will make it impossible to use the service in other applications
+
 ## Deployment
 
 To deploy this project, run the following command
